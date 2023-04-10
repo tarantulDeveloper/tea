@@ -27,8 +27,9 @@
             <td th:text="${ing.name}" class="col"></td>
             <td th:text="${ing.price}"class="col"></td>
             <td class="col"><img th:src="@{/getImage(fileName=${ing.photoUrl})}" alt="image alt text"  style="width: 300px; height: 200px"></td>
-            <td class="d-flex justify-content-around">
+            <td class="d-flex justify-content-around w-100 h-100">
                 <a th:href="@{/edit/{id}(id=${ing.id})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{/delete/{id} (id=${ing.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>

@@ -103,5 +103,14 @@ public ResponseEntity<Resource> getImage(@RequestParam("fileName") String fileNa
             .body(resource);
 }
 
+@GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable("id") int id) throws IOException {
+        Ingredient ingredient = ingredientRepo.findById(id)
+                        .orElseThrow(() -> new RuntimeException("no such ingredient"));
+        Files.deleteIfExists(Path.of(uploadPath + ingredient.getPhotoUrl()));
+        ingredientRepo.deleteById(id);
+        return "redirect:/";
+}
+
 
 }
